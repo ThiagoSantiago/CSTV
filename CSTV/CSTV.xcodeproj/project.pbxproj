@@ -95,10 +95,9 @@
 		9E25149C2929A84800B994C9 /* CSTV */ = {
 			isa = PBXGroup;
 			children = (
-				9E25149D2929A84800B994C9 /* AppDelegate.swift */,
-				9E2514A12929A84800B994C9 /* ViewController.swift */,
-				9E2514A62929A84900B994C9 /* Assets.xcassets */,
-				9E2514A82929A84900B994C9 /* LaunchScreen.storyboard */,
+				9E2514CF2929BE1100B994C9 /* Sources */,
+				9E2514CE2929BDE300B994C9 /* Resources */,
+				9E2514CD2929BD9500B994C9 /* Application */,
 				9E2514AB2929A84900B994C9 /* Info.plist */,
 			);
 			path = CSTV;
@@ -119,6 +118,31 @@
 				9E2514C02929A84900B994C9 /* CSTVUITestsLaunchTests.swift */,
 			);
 			path = CSTVUITests;
+			sourceTree = "<group>";
+		};
+		9E2514CD2929BD9500B994C9 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				9E2514A82929A84900B994C9 /* LaunchScreen.storyboard */,
+				9E25149D2929A84800B994C9 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		9E2514CE2929BDE300B994C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9E2514A62929A84900B994C9 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9E2514CF2929BE1100B994C9 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				9E2514A12929A84800B994C9 /* ViewController.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
