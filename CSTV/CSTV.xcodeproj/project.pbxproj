@@ -14,6 +14,9 @@
 		9E2514B52929A84900B994C9 /* CSTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514B42929A84900B994C9 /* CSTVTests.swift */; };
 		9E2514BF2929A84900B994C9 /* CSTVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514BE2929A84900B994C9 /* CSTVUITests.swift */; };
 		9E2514C12929A84900B994C9 /* CSTVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514C02929A84900B994C9 /* CSTVUITestsLaunchTests.swift */; };
+		9E2514D2292BC04700B994C9 /* CSTVApiSetupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514D1292BC04700B994C9 /* CSTVApiSetupProtocol.swift */; };
+		9E2514D4292BC0A100B994C9 /* CSTVApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514D3292BC0A100B994C9 /* CSTVApiError.swift */; };
+		9E2514D6292BC13F00B994C9 /* CSTVApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514D5292BC13F00B994C9 /* CSTVApiRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		9E2514BA2929A84900B994C9 /* CSTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E2514BE2929A84900B994C9 /* CSTVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVUITests.swift; sourceTree = "<group>"; };
 		9E2514C02929A84900B994C9 /* CSTVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9E2514D1292BC04700B994C9 /* CSTVApiSetupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVApiSetupProtocol.swift; sourceTree = "<group>"; };
+		9E2514D3292BC0A100B994C9 /* CSTVApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVApiError.swift; sourceTree = "<group>"; };
+		9E2514D5292BC13F00B994C9 /* CSTVApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVApiRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,9 +146,20 @@
 		9E2514CF2929BE1100B994C9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9E2514D0292BC00900B994C9 /* Service */,
 				9E2514A12929A84800B994C9 /* ViewController.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		9E2514D0292BC00900B994C9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9E2514D1292BC04700B994C9 /* CSTVApiSetupProtocol.swift */,
+				9E2514D3292BC0A100B994C9 /* CSTVApiError.swift */,
+				9E2514D5292BC13F00B994C9 /* CSTVApiRequest.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +293,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E2514A22929A84800B994C9 /* ViewController.swift in Sources */,
+				9E2514D6292BC13F00B994C9 /* CSTVApiRequest.swift in Sources */,
+				9E2514D4292BC0A100B994C9 /* CSTVApiError.swift in Sources */,
 				9E25149E2929A84800B994C9 /* AppDelegate.swift in Sources */,
+				9E2514D2292BC04700B994C9 /* CSTVApiSetupProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
