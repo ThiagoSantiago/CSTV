@@ -8,12 +8,12 @@
 import Foundation
 
 protocol CSTVApiRequestProtocol {
-    func request(_ request: CSTVApiSetupProtocol, completion: @escaping (Result<Data, CSTVApiError>) -> Void)
+    func request<T: Decodable>(with request: CSTVApiSetupProtocol, completion: @escaping (Swift.Result<T, CSTVApiError>) -> Void)
 }
 
 final class CSTVApiRequest: CSTVApiRequestProtocol {
     
-    func request(_ request: CSTVApiSetupProtocol, completion: @escaping (Result<Data, CSTVApiError>) -> Void) {
+    func request<T: Decodable>(with request: CSTVApiSetupProtocol, completion: @escaping (Swift.Result<T, CSTVApiError>) -> Void) {
         var  jsonData = NSData()
         
         guard let urlRequest = URL(string: request.endpoint) else {
@@ -60,21 +60,36 @@ final class CSTVApiRequest: CSTVApiRequestProtocol {
         task.resume()
     }
     
-    private func handler(statusCode: Int, dataResponse: Data) -> Result<Data, CSTVApiError> {
+    private func handler<T: Decodable>(statusCode: Int, dataResponse: Data) -> Swift.Result<T, CSTVApiError> {
         
         switch statusCode {
         case 200...299:
-            return Result.success(dataResponse)
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let responseModel = try decoder.decode(T.self, from: dataResponse)
+                return .success(responseModel)
+            } catch {
+                return .failure(.couldNotParseObject)
+            }
         case 403:
-            return Result.failure(.authenticationRequired)
+            return .failure(.authenticationRequired)
             
         case 404:
-            return Result.failure(.couldNotFindHost)
+            return .failure(.couldNotFindHost)
             
         case 500:
-            return Result.failure(.badRequest)
+            return .failure(.badRequest)
             
-        default: return Result.failure(.unknown("Internal error!"))
+        default: return .failure(.unknown("Internal error!"))
+        }
+    }
+    
+    func generic<T>(parameter: AnyObject, type: T.Type) -> Bool {
+        if parameter is T {
+            return true
+        } else {
+            return false
         }
     }
 }
