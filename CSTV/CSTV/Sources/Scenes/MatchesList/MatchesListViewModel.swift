@@ -12,6 +12,8 @@ protocol MatchesListViewModeling {
     var errorMessage: Bindable<String?> { get }
     var matches: Bindable<[MatchData]> { get }
     func fetch()
+    func fetchNextPage()
+    func isNextPageAvailable() -> Bool
 }
 
 final class MatchesListViewModel: MatchesListViewModeling {
@@ -21,7 +23,8 @@ final class MatchesListViewModel: MatchesListViewModeling {
     var matches: Bindable<[MatchData]> = .init([])
     var repository: MatchesListRepositoryType
     
-    private var currentPage = 0
+    private var currentPage = 1
+    private var nextPageAvailable = true
     
     init(repository: MatchesListRepositoryType) {
         self.repository = repository
@@ -29,14 +32,30 @@ final class MatchesListViewModel: MatchesListViewModeling {
     
     func fetch() {
         isLoading.value = true
-        self.currentPage += 1
-        repository.fetchMatchesList(pageIndex: 1) { [weak self] result in
+        makeRequest()
+    }
+    
+    func fetchNextPage() {
+        currentPage += 1
+        makeRequest()
+    }
+    
+    func isNextPageAvailable() -> Bool {
+        nextPageAvailable
+    }
+    
+    private func makeRequest() {
+        repository.fetchMatchesList(pageIndex: currentPage) { [weak self] result in
             guard let self = self else { return }
             self.isLoading.value = false
             
             switch result {
             case let .success(matchesList):
-                self.matches.value = matchesList
+                if matchesList.count != self.matches.value.count {
+                    self.matches.value = matchesList
+                } else {
+                    self.nextPageAvailable = false
+                }
             case let .failure(error):
                 self.errorMessage.value = error.localizedDescription
             }
