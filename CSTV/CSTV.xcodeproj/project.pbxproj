@@ -27,10 +27,13 @@
 		9E2514ED292C56E000B994C9 /* MatchListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514EC292C56E000B994C9 /* MatchListItemTableViewCell.swift */; };
 		9E2514EF292C5CAB00B994C9 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514EE292C5CAB00B994C9 /* ViewConfiguration.swift */; };
 		9E2514F1292C601A00B994C9 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514F0292C601A00B994C9 /* Space.swift */; };
-		9E2514F3292C732100B994C9 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514F2292C732100B994C9 /* ImageDownloader.swift */; };
 		9E2514FC292D4E1A00B994C9 /* TeamLogoAndNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514FB292D4E1A00B994C9 /* TeamLogoAndNameView.swift */; };
 		9E2514FE292D553600B994C9 /* TeamVersusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514FD292D553600B994C9 /* TeamVersusView.swift */; };
 		9E251500292D874A00B994C9 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514FF292D874A00B994C9 /* BadgeView.swift */; };
+		9E251506292E518E00B994C9 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9E251505292E518E00B994C9 /* SDWebImage */; };
+		9E69A8D0292E72220022EDE9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A8CF292E72220022EDE9 /* String+Extension.swift */; };
+		9E69A8D2292E841D0022EDE9 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A8D1292E841D0022EDE9 /* Date+Extension.swift */; };
+		9E69A8D5292EA62F0022EDE9 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A8D4292EA62F0022EDE9 /* Images.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,10 +78,12 @@
 		9E2514EC292C56E000B994C9 /* MatchListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchListItemTableViewCell.swift; sourceTree = "<group>"; };
 		9E2514EE292C5CAB00B994C9 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		9E2514F0292C601A00B994C9 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
-		9E2514F2292C732100B994C9 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		9E2514FB292D4E1A00B994C9 /* TeamLogoAndNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLogoAndNameView.swift; sourceTree = "<group>"; };
 		9E2514FD292D553600B994C9 /* TeamVersusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamVersusView.swift; sourceTree = "<group>"; };
 		9E2514FF292D874A00B994C9 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		9E69A8CF292E72220022EDE9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		9E69A8D1292E841D0022EDE9 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		9E69A8D4292EA62F0022EDE9 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E251506292E518E00B994C9 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +172,7 @@
 		9E2514CE2929BDE300B994C9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9E69A8D3292EA60B0022EDE9 /* Images */,
 				9E2514E9292C3CFC00B994C9 /* Colors */,
 				9E2514A62929A84900B994C9 /* Assets.xcassets */,
 			);
@@ -175,6 +182,7 @@
 		9E2514CF2929BE1100B994C9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9E69A8CD292E72070022EDE9 /* Helpers */,
 				9E2514F9292D4DDE00B994C9 /* Commons */,
 				9E2514D9292BC7C800B994C9 /* Components */,
 				9E2514E2292BCA7800B994C9 /* Models */,
@@ -190,7 +198,6 @@
 				9E2514D1292BC04700B994C9 /* CSTVApiSetupProtocol.swift */,
 				9E2514D3292BC0A100B994C9 /* CSTVApiError.swift */,
 				9E2514D5292BC13F00B994C9 /* CSTVApiRequest.swift */,
-				9E2514F2292C732100B994C9 /* ImageDownloader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -260,6 +267,31 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		9E69A8CD292E72070022EDE9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9E69A8CE292E720F0022EDE9 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9E69A8CE292E720F0022EDE9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9E69A8CF292E72220022EDE9 /* String+Extension.swift */,
+				9E69A8D1292E841D0022EDE9 /* Date+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9E69A8D3292EA60B0022EDE9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9E69A8D4292EA62F0022EDE9 /* Images.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,6 +308,9 @@
 			dependencies = (
 			);
 			name = CSTV;
+			packageProductDependencies = (
+				9E251505292E518E00B994C9 /* SDWebImage */,
+			);
 			productName = CSTV;
 			productReference = 9E25149A2929A84800B994C9 /* CSTV.app */;
 			productType = "com.apple.product-type.application";
@@ -348,6 +383,9 @@
 				Base,
 			);
 			mainGroup = 9E2514912929A84800B994C9;
+			packageReferences = (
+				9E251504292E518E00B994C9 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 9E25149B2929A84800B994C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -392,10 +430,12 @@
 			files = (
 				9E2514E1292BCA3E00B994C9 /* MatchesListRepository.swift in Sources */,
 				9E2514EB292C3D1400B994C9 /* Colors.swift in Sources */,
-				9E2514F3292C732100B994C9 /* ImageDownloader.swift in Sources */,
 				9E2514D6292BC13F00B994C9 /* CSTVApiRequest.swift in Sources */,
+				9E69A8D0292E72220022EDE9 /* String+Extension.swift in Sources */,
 				9E2514E4292BCCF300B994C9 /* Match.swift in Sources */,
+				9E69A8D2292E841D0022EDE9 /* Date+Extension.swift in Sources */,
 				9E2514FE292D553600B994C9 /* TeamVersusView.swift in Sources */,
+				9E69A8D5292EA62F0022EDE9 /* Images.swift in Sources */,
 				9E2514FC292D4E1A00B994C9 /* TeamLogoAndNameView.swift in Sources */,
 				9E2514DF292BCA0700B994C9 /* MatchesListViewModel.swift in Sources */,
 				9E2514F1292C601A00B994C9 /* Space.swift in Sources */,
@@ -740,6 +780,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E251504292E518E00B994C9 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E251505292E518E00B994C9 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E251504292E518E00B994C9 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9E2514922929A84800B994C9 /* Project object */;
 }

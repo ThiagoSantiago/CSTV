@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 fileprivate extension CGFloat {
     static let cornerRadius: CGFloat = 16
     static let softCornerRadius: CGFloat = 8
     static let leagueImageSize: CGFloat = 16
     static let badgeHeight: CGFloat = 38
+    static let badgeWidth: CGFloat = 54
+    static let separatorHeight: CGFloat = 1
 }
 
 final class MatchListItemTableViewCell: UITableViewCell {
@@ -31,9 +34,7 @@ final class MatchListItemTableViewCell: UITableViewCell {
     }()
     
     private lazy var teamVersusView: TeamVersusView = {
-        let teamOneViewModel = TeamVersusViewModel(teamName: "BIG Academy", teamLogoUrl: "https://cdn.pandascore.co/images/team/image/126694/big.png")
-        let teamTwoViewModel = TeamVersusViewModel(teamName: "Sissi State Punks", teamLogoUrl: "https://cdn.pandascore.co/images/team/image/127933/s_uujc_tn.png")
-       let teamView = TeamVersusView(teamOne: teamOneViewModel, teamTwo: teamTwoViewModel)
+       let teamView = TeamVersusView()
         teamView.translatesAutoresizingMaskIntoConstraints = false
         return teamView
     }()
@@ -46,7 +47,7 @@ final class MatchListItemTableViewCell: UITableViewCell {
     
     private lazy var leagueImage: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .imageBackgroundColor
+        image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -55,7 +56,6 @@ final class MatchListItemTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .white
-        label.text = "League + serie"
         label.font = UIFont.systemFont(ofSize: 8)
         return label
     }()
@@ -77,15 +77,66 @@ final class MatchListItemTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func configure(with model: MatchData) {
+        setBadgeContent(initialTime: model.beginTime,
+                        gameStatus: GameStatus(rawValue: model.gameStatus) ?? .notStarted)
+        
+        setTeamsContent(firstOponentName: model.firstOponentName,
+                        firstOponentLogo: model.firstOponentLogo,
+                        secondOponentName: model.secondOponentName,
+                        secondOponentLogo: model.secondOponentLogo)
+        
+        
+        setLeagueContent(leagueImageUrl: model.leagueImage,
+                         leagueName: model.leagueName,
+                         serieName: model.serieName)
+    }
+    
+    private func setTeamsContent(firstOponentName: String,
+                                 firstOponentLogo: String,
+                                 secondOponentName: String,
+                                 secondOponentLogo: String) {
+        
+        let firstOponent = TeamVersusViewModel(teamName: firstOponentName, teamLogoUrl: firstOponentLogo)
+        let secondOponent = TeamVersusViewModel(teamName: secondOponentName, teamLogoUrl: secondOponentLogo)
+        
+        teamVersusView.setContent(firstOponent: firstOponent, secondOponent: secondOponent)
+    }
+    
+    private func setBadgeContent(initialTime: String, gameStatus: GameStatus) {
+        if gameStatus == .running {
+            badgeView.setBadgeTitle("AGORA")
+            badgeView.updateStatus(status: .running)
+        } else {
+            badgeView.setBadgeTitle(getFormattedDate(date: initialTime))
+            badgeView.updateStatus(status: .upComing)
+        }
+    }
+    
+    private func setLeagueContent(leagueImageUrl: String, leagueName: String, serieName: String) {
+        leagueAndSerieLabel.text = leagueName+" + "+serieName
+        
+        leagueImage.sd_setImage(with: URL(string:leagueImageUrl), placeholderImage: .teamLogoPlaceholder)
+    }
+    
+    private func getFormattedDate(date: String) -> String {
+        guard let dateFormatted = date.getDateFromString() else { return date}
+        
+        if Calendar.current.isDateInToday(dateFormatted) {
+            return "Hoje, \(date.formatDateStringToStringFormat(toFormat: "HH:mm"))"
+        } else if Calendar.current.isDateInTomorrow(dateFormatted) {
+            return date.formatDateStringToStringFormat(toFormat: "E, HH:mm")
+        } else {
+            return date.formatDateStringToStringFormat(toFormat: "dd.MM HH:mm")
+        }
+    }
 }
 
 extension MatchListItemTableViewCell: ViewConfiguration {
     func configureViews() {
         backgroundColor = .clear
         selectionStyle = .none
-        
-        badgeView.setBadgeTitle("AGORA")
-        badgeView.updateStatus(status: .running)
         
         containerView.backgroundColor = .listItemBackgroundColor
         separatorView.backgroundColor = .listItemseparatorColor
@@ -124,7 +175,7 @@ extension MatchListItemTableViewCell: ViewConfiguration {
         NSLayoutConstraint.activate([
             separatorView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
             separatorView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 1),
+            separatorView.heightAnchor.constraint(equalToConstant: .separatorHeight),
         ])
 
         NSLayoutConstraint.activate([
@@ -143,7 +194,7 @@ extension MatchListItemTableViewCell: ViewConfiguration {
             badgeView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: -Space.base02.rawValue),
             badgeView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: Space.base01.rawValue),
             badgeView.heightAnchor.constraint(equalToConstant: .badgeHeight),
-            badgeView.widthAnchor.constraint(greaterThanOrEqualToConstant: 54),
+            badgeView.widthAnchor.constraint(greaterThanOrEqualToConstant: .badgeWidth),
         ])
     }
 }

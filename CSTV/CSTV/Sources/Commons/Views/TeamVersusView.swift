@@ -14,17 +14,14 @@ struct TeamVersusViewModel {
 }
 
 final class TeamVersusView: UIView {
-    private let teamOneData: TeamVersusViewModel
-    private let teamTwoData: TeamVersusViewModel
-    
     private lazy var teamOne: TeamLogoAndNameView = {
-        let teamView = TeamLogoAndNameView(teamName: teamOneData.teamName, teamLogoUrl: teamOneData.teamLogoUrl)
+        let teamView = TeamLogoAndNameView()
         teamView.translatesAutoresizingMaskIntoConstraints = false
         return teamView
     }()
     
     private lazy var teamTwo: TeamLogoAndNameView = {
-        let teamView = TeamLogoAndNameView(teamName: teamTwoData.teamName, teamLogoUrl: teamTwoData.teamLogoUrl)
+        let teamView = TeamLogoAndNameView()
         teamView.translatesAutoresizingMaskIntoConstraints = false
         return teamView
     }()
@@ -33,7 +30,7 @@ final class TeamVersusView: UIView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .versusLabelColor
-        label.text = "vs"
+        label.text = "VS"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,9 +45,7 @@ final class TeamVersusView: UIView {
         return stackView
     }()
     
-    init(teamOne: TeamVersusViewModel, teamTwo: TeamVersusViewModel) {
-        self.teamOneData = teamOne
-        self.teamTwoData = teamTwo
+    init() {
         super.init(frame: .zero)
         
         buildLayout()
@@ -59,6 +54,13 @@ final class TeamVersusView: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(codes:) has not been implemented")
+    }
+    
+    func setContent(firstOponent: TeamVersusViewModel, secondOponent: TeamVersusViewModel) {
+        teamOne.setContent(teamName: firstOponent.teamName, teamImage: firstOponent.teamLogoUrl)
+        teamTwo.setContent(teamName: secondOponent.teamName, teamImage: secondOponent.teamLogoUrl)
+        
+        buildLayout()
     }
 }
 
@@ -81,6 +83,14 @@ extension TeamVersusView: ViewConfiguration {
         
         NSLayoutConstraint.activate([
             versusLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            teamOne.widthAnchor.constraint(greaterThanOrEqualToConstant: 70),
+        ])
+        
+        NSLayoutConstraint.activate([
+            teamTwo.widthAnchor.constraint(greaterThanOrEqualToConstant: 70),
         ])
     }
 }

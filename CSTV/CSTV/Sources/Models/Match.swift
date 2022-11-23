@@ -7,6 +7,26 @@
 
 import Foundation
 
+enum GameStatus: String {
+    case finished = "finished"
+    case notPlayed = "not_played"
+    case notStarted = "not_started"
+    case running = "running"
+}
+
+struct MatchData {
+    let firstOponentName: String
+    let firstOponentLogo: String
+    let secondOponentName: String
+    let secondOponentLogo: String
+    let beginTime: String
+    let endTime: String
+    let gameStatus: String
+    let leagueImage: String
+    let leagueName: String
+    let serieName: String
+}
+
 struct Match: Decodable {
     let beginAt: String?
     let detailedStats: Bool?

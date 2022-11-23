@@ -29,7 +29,7 @@ struct Winner: Decodable {
 
 struct League: Decodable {
     let id: Int?
-    let imageURL: String?
+    let imageUrl: String?
     let modifiedAt: String?
     let name: String?
     let slug: String?
@@ -50,7 +50,7 @@ struct OpponentElement: Decodable {
 struct Opponent: Decodable {
     let acronym: String?
     let id: Int?
-    let imageURL: String?
+    let imageUrl: String?
     let location: String?
     let modifiedAt: String?
     let name: String?
@@ -77,11 +77,11 @@ struct Serie: Codable {
 }
 
 struct StreamsList: Codable {
-    let embedURL: String?
+    let embedUrl: String?
     let language: String?
     let main: Bool?
     let official: Bool?
-    let rawURL: String?
+    let rawUrl: String?
 }
 
 struct Tournament: Codable {

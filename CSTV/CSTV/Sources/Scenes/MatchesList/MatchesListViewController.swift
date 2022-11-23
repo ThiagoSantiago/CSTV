@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+fileprivate extension CGFloat {
+    static let loadSize: CGFloat = 42
+    static let cellHeight: CGFloat = 200
+}
+
 final class MatchesListViewController: UIViewController {
     
     private lazy var screenTitleLabel: UILabel = {
@@ -28,6 +33,7 @@ final class MatchesListViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.prefetchDataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -114,8 +120,8 @@ extension MatchesListViewController: ViewConfiguration {
         NSLayoutConstraint.activate([
             loadContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loadContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            loadContainerView.widthAnchor.constraint(equalToConstant: 42),
-            loadContainerView.heightAnchor.constraint(equalToConstant: 42)
+            loadContainerView.widthAnchor.constraint(equalToConstant: .loadSize),
+            loadContainerView.heightAnchor.constraint(equalToConstant: .loadSize)
         ])
         
         NSLayoutConstraint.activate([
@@ -137,10 +143,19 @@ extension MatchesListViewController: UITableViewDelegate, UITableViewDataSource 
             return UITableViewCell()
         }
         
+        let matchItem = viewModel.matches.value[indexPath.row]
+        
+        cell.configure(with: matchItem)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return .cellHeight
+    }
+}
+
+extension MatchesListViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
     }
 }

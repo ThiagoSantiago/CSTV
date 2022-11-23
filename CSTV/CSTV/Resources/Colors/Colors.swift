@@ -19,5 +19,4 @@ extension UIColor {
     static let versusLabelColor = color(named: "versus-label-color") ?? .clear
     static let badgeRunningStatusColor = color(named: "badge-running-status-color") ?? .clear
     static let badgeUpcomingStatusColor = color(named: "badge-upcoming-status-color") ?? .clear
-    
 }

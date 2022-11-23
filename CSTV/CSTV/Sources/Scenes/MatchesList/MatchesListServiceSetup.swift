@@ -13,8 +13,9 @@ enum MatchesListServiceSetup: CSTVApiSetupProtocol {
     var endpoint: String {
         switch self {
         case let .getMatches(page):
+            let todayDate = Date.now.getStringDate(toFormat: "yyyy-MM-dd")
             guard let baseUrl = Bundle.main.object(forInfoDictionaryKey: "BaseURL") as? String else { return "" }
-            let url = baseUrl+"/csgo/matches?page[size]=10&page[number]=\(page)"
+            let url = baseUrl+"/csgo/matches?filter[finished]=false&filter[begin_at]=\(todayDate)&sort=begin_at&page[size]=10&page[number]=\(page)"
             
             return url
         }

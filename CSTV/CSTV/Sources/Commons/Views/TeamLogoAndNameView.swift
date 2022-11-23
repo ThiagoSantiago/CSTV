@@ -6,12 +6,18 @@
 //
 
 import Foundation
+import SDWebImage
 import UIKit
+
+fileprivate extension CGFloat {
+    static let cornerRadius: CGFloat = 30
+    static let teamLogoSize: CGFloat = 60
+}
 
 final class TeamLogoAndNameView: UIView {
     private lazy var teamLogoImage: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .imageBackgroundColor
+        image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -20,19 +26,13 @@ final class TeamLogoAndNameView: UIView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .white
-        label.text = teamName
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let teamName: String
-    private let teamLogoUrl: String
-    
-    init(teamName: String, teamLogoUrl: String) {
-        self.teamName = teamName
-        self.teamLogoUrl = teamLogoUrl
+    init() {
         super.init(frame: .zero)
         
         buildLayout()
@@ -41,6 +41,12 @@ final class TeamLogoAndNameView: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(codes:) has not been implemented")
+    }
+    
+    func setContent(teamName: String, teamImage: String) {
+        teamNameLabel.text = teamName
+        teamLogoImage.sd_setImage(with: URL(string: teamImage), placeholderImage: .teamLogoPlaceholder)
+        buildLayout()
     }
 }
 
@@ -53,20 +59,14 @@ extension TeamLogoAndNameView: ViewConfiguration {
     func configureViews() {
         backgroundColor = .clear
         
-        teamLogoImage.layer.cornerRadius = 30
-        
-        guard let logoUrl = URL(string: teamLogoUrl) else { return }
-        ImageDownloader.shared.loadImage(from: logoUrl) { [weak self] teamLogo in
-            self?.teamLogoImage.image = teamLogo
-            self?.teamLogoImage.backgroundColor = .clear
-        }
+        teamLogoImage.layer.cornerRadius = .cornerRadius
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             teamLogoImage.topAnchor.constraint(equalTo: topAnchor),
-            teamLogoImage.widthAnchor.constraint(equalToConstant: 60),
-            teamLogoImage.heightAnchor.constraint(equalToConstant: 60),
+            teamLogoImage.widthAnchor.constraint(equalToConstant: .teamLogoSize),
+            teamLogoImage.heightAnchor.constraint(equalToConstant: .teamLogoSize),
             teamLogoImage.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         
