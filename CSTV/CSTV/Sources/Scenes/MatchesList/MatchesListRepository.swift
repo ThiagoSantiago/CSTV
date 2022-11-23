@@ -45,17 +45,16 @@ final class MatchesListRepository: MatchesListRepositoryType {
                   oponentsCount == 2,
                   let firstOponent: Opponent = item.opponents?[0].opponent,
                   let seconfOponent: Opponent = item.opponents?[1].opponent,
-                  let game: Game = item.games?.first else { return }
-            
-            let matchBeginTime: String = item.beginAt ?? ""
+                  let games: [Game] = item.games,
+                  let gameNotCompleted = games.filter({ $0.complete == false }).first else { return }
             
             let match = MatchData(firstOponentName: firstOponent.name ?? "",
                              firstOponentLogo: firstOponent.imageUrl ?? "",
                              secondOponentName: seconfOponent.name ?? "",
                              secondOponentLogo: seconfOponent.imageUrl ?? "",
-                             beginTime: matchBeginTime.isEmpty ? item.scheduledAt ?? "" : matchBeginTime,
+                             beginTime: item.beginAt ?? "",
                              endTime: item.endAt ?? "",
-                             gameStatus: game.status ?? "",
+                             gameStatus: gameNotCompleted.status ?? "",
                              leagueImage: item.league?.imageUrl ?? "",
                              leagueName: item.league?.name ?? "",
                              serieName: item.serie?.name ?? "")

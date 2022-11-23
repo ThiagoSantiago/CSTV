@@ -126,7 +126,7 @@ final class MatchListItemTableViewCell: UITableViewCell {
         if Calendar.current.isDateInToday(dateFormatted) {
             return "Hoje, \(date.formatDateStringToStringFormat(toFormat: "HH:mm"))"
         } else if Calendar.current.isDateInTomorrow(dateFormatted) {
-            return date.formatDateStringToStringFormat(toFormat: "E, HH:mm")
+            return date.formatDateStringToStringFormat(toFormat: "E HH:mm")
         } else {
             return date.formatDateStringToStringFormat(toFormat: "dd.MM HH:mm")
         }
