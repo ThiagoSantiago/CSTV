@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+fileprivate extension CGFloat {
+    static let teamViewWidth: CGFloat = 120
+}
+
 struct TeamVersusViewModel {
     let teamName: String
     let teamLogoUrl: String
@@ -66,31 +70,27 @@ final class TeamVersusView: UIView {
 
 extension TeamVersusView: ViewConfiguration {
     func buildViewHierarchy() {
-        stackView.addArrangedSubview(teamOne)
-        stackView.addArrangedSubview(versusLabel)
-        stackView.addArrangedSubview(teamTwo)
-        
-        addSubview(stackView)
+        addSubview(teamOne)
+        addSubview(versusLabel)
+        addSubview(teamTwo)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leftAnchor.constraint(equalTo: leftAnchor),
-            stackView.rightAnchor.constraint(equalTo: rightAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            versusLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            versusLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            versusLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
+            teamOne.topAnchor.constraint(equalTo: topAnchor),
+            teamOne.rightAnchor.constraint(equalTo: versusLabel.leftAnchor, constant: -Space.base00.rawValue),
+            teamOne.widthAnchor.constraint(greaterThanOrEqualToConstant: .teamViewWidth),
         ])
         
         NSLayoutConstraint.activate([
-            teamOne.widthAnchor.constraint(greaterThanOrEqualToConstant: 70),
-        ])
-        
-        NSLayoutConstraint.activate([
-            teamTwo.widthAnchor.constraint(greaterThanOrEqualToConstant: 70),
+            teamTwo.topAnchor.constraint(equalTo: topAnchor),
+            teamTwo.leftAnchor.constraint(equalTo: versusLabel.rightAnchor, constant: Space.base00.rawValue),
+            teamTwo.widthAnchor.constraint(equalToConstant: .teamViewWidth),
         ])
     }
 }

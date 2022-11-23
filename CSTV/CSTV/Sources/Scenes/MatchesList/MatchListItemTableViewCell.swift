@@ -115,7 +115,11 @@ final class MatchListItemTableViewCell: UITableViewCell {
     }
     
     private func setLeagueContent(leagueImageUrl: String, leagueName: String, serieName: String) {
-        leagueAndSerieLabel.text = leagueName+" + "+serieName
+        if serieName.isEmpty {
+            leagueAndSerieLabel.text = leagueName
+        } else {
+            leagueAndSerieLabel.text = leagueName+" + "+serieName
+        }
         
         leagueImage.sd_setImage(with: URL(string:leagueImageUrl), placeholderImage: .teamLogoPlaceholder)
     }

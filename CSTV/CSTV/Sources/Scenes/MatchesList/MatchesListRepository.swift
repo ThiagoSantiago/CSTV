@@ -44,9 +44,7 @@ final class MatchesListRepository: MatchesListRepositoryType {
             guard let oponentsCount = item.opponents?.count,
                   oponentsCount == 2,
                   let firstOponent: Opponent = item.opponents?[0].opponent,
-                  let seconfOponent: Opponent = item.opponents?[1].opponent,
-                  let games: [Game] = item.games,
-                  let gameNotCompleted = games.filter({ $0.complete == false }).first else { return }
+                  let seconfOponent: Opponent = item.opponents?[1].opponent else { return }
             
             let match = MatchData(firstOponentName: firstOponent.name ?? "",
                              firstOponentLogo: firstOponent.imageUrl ?? "",
@@ -54,7 +52,7 @@ final class MatchesListRepository: MatchesListRepositoryType {
                              secondOponentLogo: seconfOponent.imageUrl ?? "",
                              beginTime: item.beginAt ?? "",
                              endTime: item.endAt ?? "",
-                             gameStatus: gameNotCompleted.status ?? "",
+                             gameStatus: item.status ?? "",
                              leagueImage: item.league?.imageUrl ?? "",
                              leagueName: item.league?.name ?? "",
                              serieName: item.serie?.name ?? "")

@@ -34,6 +34,7 @@
 		9E69A8D0292E72220022EDE9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A8CF292E72220022EDE9 /* String+Extension.swift */; };
 		9E69A8D2292E841D0022EDE9 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A8D1292E841D0022EDE9 /* Date+Extension.swift */; };
 		9E69A8D5292EA62F0022EDE9 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A8D4292EA62F0022EDE9 /* Images.swift */; };
+		9E69A8D7292ED7330022EDE9 /* MatchesListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E69A8D6292ED7330022EDE9 /* MatchesListFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		9E69A8CF292E72220022EDE9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9E69A8D1292E841D0022EDE9 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		9E69A8D4292EA62F0022EDE9 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		9E69A8D6292ED7330022EDE9 /* MatchesListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				9E2514E0292BCA3E00B994C9 /* MatchesListRepository.swift */,
 				9E2514E7292BEFB100B994C9 /* MatchesListServiceSetup.swift */,
 				9E2514EC292C56E000B994C9 /* MatchListItemTableViewCell.swift */,
+				9E69A8D6292ED7330022EDE9 /* MatchesListFactory.swift */,
 			);
 			path = MatchesList;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				9E2514DB292BC7DC00B994C9 /* Bindable.swift in Sources */,
 				9E2514E6292BD55300B994C9 /* Game.swift in Sources */,
 				9E2514D4292BC0A100B994C9 /* CSTVApiError.swift in Sources */,
+				9E69A8D7292ED7330022EDE9 /* MatchesListFactory.swift in Sources */,
 				9E251500292D874A00B994C9 /* BadgeView.swift in Sources */,
 				9E25149E2929A84800B994C9 /* AppDelegate.swift in Sources */,
 				9E2514D2292BC04700B994C9 /* CSTVApiSetupProtocol.swift in Sources */,
@@ -622,8 +626,7 @@
 				INFOPLIST_FILE = CSTV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -649,8 +652,7 @@
 				INFOPLIST_FILE = CSTV/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
