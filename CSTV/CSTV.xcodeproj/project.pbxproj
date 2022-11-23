@@ -23,6 +23,14 @@
 		9E2514E4292BCCF300B994C9 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514E3292BCCF300B994C9 /* Match.swift */; };
 		9E2514E6292BD55300B994C9 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514E5292BD55300B994C9 /* Game.swift */; };
 		9E2514E8292BEFB100B994C9 /* MatchesListServiceSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514E7292BEFB100B994C9 /* MatchesListServiceSetup.swift */; };
+		9E2514EB292C3D1400B994C9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514EA292C3D1400B994C9 /* Colors.swift */; };
+		9E2514ED292C56E000B994C9 /* MatchListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514EC292C56E000B994C9 /* MatchListItemTableViewCell.swift */; };
+		9E2514EF292C5CAB00B994C9 /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514EE292C5CAB00B994C9 /* ViewConfiguration.swift */; };
+		9E2514F1292C601A00B994C9 /* Space.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514F0292C601A00B994C9 /* Space.swift */; };
+		9E2514F3292C732100B994C9 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514F2292C732100B994C9 /* ImageDownloader.swift */; };
+		9E2514FC292D4E1A00B994C9 /* TeamLogoAndNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514FB292D4E1A00B994C9 /* TeamLogoAndNameView.swift */; };
+		9E2514FE292D553600B994C9 /* TeamVersusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514FD292D553600B994C9 /* TeamVersusView.swift */; };
+		9E251500292D874A00B994C9 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2514FF292D874A00B994C9 /* BadgeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +71,14 @@
 		9E2514E3292BCCF300B994C9 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		9E2514E5292BD55300B994C9 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		9E2514E7292BEFB100B994C9 /* MatchesListServiceSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesListServiceSetup.swift; sourceTree = "<group>"; };
+		9E2514EA292C3D1400B994C9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		9E2514EC292C56E000B994C9 /* MatchListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchListItemTableViewCell.swift; sourceTree = "<group>"; };
+		9E2514EE292C5CAB00B994C9 /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
+		9E2514F0292C601A00B994C9 /* Space.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Space.swift; sourceTree = "<group>"; };
+		9E2514F2292C732100B994C9 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		9E2514FB292D4E1A00B994C9 /* TeamLogoAndNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLogoAndNameView.swift; sourceTree = "<group>"; };
+		9E2514FD292D553600B994C9 /* TeamVersusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamVersusView.swift; sourceTree = "<group>"; };
+		9E2514FF292D874A00B994C9 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +166,7 @@
 		9E2514CE2929BDE300B994C9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9E2514E9292C3CFC00B994C9 /* Colors */,
 				9E2514A62929A84900B994C9 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -158,6 +175,7 @@
 		9E2514CF2929BE1100B994C9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9E2514F9292D4DDE00B994C9 /* Commons */,
 				9E2514D9292BC7C800B994C9 /* Components */,
 				9E2514E2292BCA7800B994C9 /* Models */,
 				9E2514D7292BC66700B994C9 /* Scenes */,
@@ -172,6 +190,7 @@
 				9E2514D1292BC04700B994C9 /* CSTVApiSetupProtocol.swift */,
 				9E2514D3292BC0A100B994C9 /* CSTVApiError.swift */,
 				9E2514D5292BC13F00B994C9 /* CSTVApiRequest.swift */,
+				9E2514F2292C732100B994C9 /* ImageDownloader.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -187,10 +206,12 @@
 		9E2514D8292BC66E00B994C9 /* MatchesList */ = {
 			isa = PBXGroup;
 			children = (
+				9E2514FF292D874A00B994C9 /* BadgeView.swift */,
 				9E2514DC292BC9F400B994C9 /* MatchesListViewController.swift */,
 				9E2514DE292BCA0700B994C9 /* MatchesListViewModel.swift */,
 				9E2514E0292BCA3E00B994C9 /* MatchesListRepository.swift */,
 				9E2514E7292BEFB100B994C9 /* MatchesListServiceSetup.swift */,
+				9E2514EC292C56E000B994C9 /* MatchListItemTableViewCell.swift */,
 			);
 			path = MatchesList;
 			sourceTree = "<group>";
@@ -199,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				9E2514DA292BC7DC00B994C9 /* Bindable.swift */,
+				9E2514EE292C5CAB00B994C9 /* ViewConfiguration.swift */,
+				9E2514F0292C601A00B994C9 /* Space.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -210,6 +233,31 @@
 				9E2514E5292BD55300B994C9 /* Game.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9E2514E9292C3CFC00B994C9 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				9E2514EA292C3D1400B994C9 /* Colors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		9E2514F9292D4DDE00B994C9 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				9E2514FA292D4DFD00B994C9 /* Views */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		9E2514FA292D4DFD00B994C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9E2514FB292D4E1A00B994C9 /* TeamLogoAndNameView.swift */,
+				9E2514FD292D553600B994C9 /* TeamVersusView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,12 +391,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E2514E1292BCA3E00B994C9 /* MatchesListRepository.swift in Sources */,
+				9E2514EB292C3D1400B994C9 /* Colors.swift in Sources */,
+				9E2514F3292C732100B994C9 /* ImageDownloader.swift in Sources */,
 				9E2514D6292BC13F00B994C9 /* CSTVApiRequest.swift in Sources */,
 				9E2514E4292BCCF300B994C9 /* Match.swift in Sources */,
+				9E2514FE292D553600B994C9 /* TeamVersusView.swift in Sources */,
+				9E2514FC292D4E1A00B994C9 /* TeamLogoAndNameView.swift in Sources */,
 				9E2514DF292BCA0700B994C9 /* MatchesListViewModel.swift in Sources */,
+				9E2514F1292C601A00B994C9 /* Space.swift in Sources */,
+				9E2514EF292C5CAB00B994C9 /* ViewConfiguration.swift in Sources */,
+				9E2514ED292C56E000B994C9 /* MatchListItemTableViewCell.swift in Sources */,
 				9E2514DB292BC7DC00B994C9 /* Bindable.swift in Sources */,
 				9E2514E6292BD55300B994C9 /* Game.swift in Sources */,
 				9E2514D4292BC0A100B994C9 /* CSTVApiError.swift in Sources */,
+				9E251500292D874A00B994C9 /* BadgeView.swift in Sources */,
 				9E25149E2929A84800B994C9 /* AppDelegate.swift in Sources */,
 				9E2514D2292BC04700B994C9 /* CSTVApiSetupProtocol.swift in Sources */,
 				9E2514DD292BC9F400B994C9 /* MatchesListViewController.swift in Sources */,

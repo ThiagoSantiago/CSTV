@@ -29,7 +29,6 @@ struct MatchesListViewModel: MatchesListViewModeling {
             switch result {
             case let .success(matchesList):
                 self.matches.value = matchesList
-                print("######## Matches list: \(matchesList)")
             case let .failure(error):
                 errorMessage.value = error.localizedDescription
             }
