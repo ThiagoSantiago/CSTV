@@ -36,7 +36,7 @@ final class TeamVersusView: UIView {
         label.textColor = .versusLabelColor
         label.text = "VS"
         label.textAlignment = .center
-        label.font = .h6
+        label.font = .regularH7
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
