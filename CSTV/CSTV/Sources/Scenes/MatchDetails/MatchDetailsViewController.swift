@@ -1,8 +1,8 @@
 //
-//  MatchesListViewController.swift
+//  MatchDetailsViewController.swift
 //  CSTV
 //
-//  Created by Thiago Santiago (Contractor) on 21/11/22.
+//  Created by Thiago Santiago (Contractor) on 23/11/22.
 //
 
 import Foundation
@@ -10,20 +10,27 @@ import UIKit
 
 fileprivate extension CGFloat {
     static let loadSize: CGFloat = 42
-    static let cellHeight: CGFloat = 200
+    static let backButtonSize: CGFloat = 24
 }
 
-final class MatchesListViewController: UIViewController {
+final class MatchDetailsViewController: UIViewController {
     
     private lazy var screenTitleLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 1
-        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.textColor = .white
-        label.text = "Partidas"
-        label.font = .h2
+        label.text = "League + serie"
+        label.font = UIFont.systemFont(ofSize: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(.arrowLeft, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     private lazy var tableView: UITableView = {
@@ -53,17 +60,17 @@ final class MatchesListViewController: UIViewController {
         return view
     }()
     
-    private let viewModel: MatchesListViewModeling
+    private let viewModel: MatchDetailsViewModeling
     
-    init(viewModel: MatchesListViewModeling) {
+    init(viewModel: MatchDetailsViewModeling) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         
         buildLayout()
         bindViewModel()
-        tableView.register(MatchListItemTableViewCell.self, forCellReuseIdentifier: MatchListItemTableViewCell.identifier)
+        tableView.register(MatchDetailTableViewCell.self, forCellReuseIdentifier: MatchDetailTableViewCell.identifier)
     }
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -75,7 +82,7 @@ final class MatchesListViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.matches.bind { [weak self] _ in
+        viewModel.teams.bind { [weak self] _ in
             self?.tableView.reloadData()
         }
         
@@ -86,33 +93,62 @@ final class MatchesListViewController: UIViewController {
     
     private func showLoad(isLoading: Bool) {
         loadContainerView.isHidden = !isLoading
+        tableView.isHidden = isLoading
+    }
+    
+    @objc
+    private func backButtonPressed() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
-extension MatchesListViewController: ViewConfiguration {
+extension MatchDetailsViewController: ViewConfiguration {
     func configureViews() {
         view.backgroundColor = .appBackgroundColor
+        
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        
+        guard let matchData = viewModel.matchData.value else {
+            screenTitleLabel.text = ""
+            return
+        }
+        
+        if matchData.serieName.isEmpty {
+            screenTitleLabel.text = matchData.leagueName
+        } else {
+            screenTitleLabel.text = "\(matchData.leagueName) + \(matchData.serieName)"
+        }
     }
     
     func buildViewHierarchy() {
         loadContainerView.addSubview(loadIndicator)
         
+        view.addSubview(backButton)
         view.addSubview(screenTitleLabel)
         view.addSubview(tableView)
         view.addSubview(loadContainerView)
     }
     
     func setupConstraints() {
+        
         NSLayoutConstraint.activate([
-            screenTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: Space.base12.rawValue),
-            screenTitleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Space.base05.rawValue),
+            backButton.centerYAnchor.constraint(equalTo: screenTitleLabel.centerYAnchor),
+            backButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Space.base05.rawValue),
+            backButton.widthAnchor.constraint(equalToConstant: .backButtonSize),
+            backButton.heightAnchor.constraint(equalToConstant: .backButtonSize)
+        ])
+        
+        NSLayoutConstraint.activate([
+            screenTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: Space.base14.rawValue),
+            screenTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            screenTitleLabel.leftAnchor.constraint(equalTo: backButton.rightAnchor, constant: Space.base00.rawValue),
             screenTitleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Space.base05.rawValue),
         ])
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: screenTitleLabel.bottomAnchor, constant: Space.base05.rawValue),
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Space.base05.rawValue),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Space.base05.rawValue),
+            tableView.topAnchor.constraint(equalTo: screenTitleLabel.bottomAnchor, constant: Space.base00.rawValue),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
@@ -132,42 +168,22 @@ extension MatchesListViewController: ViewConfiguration {
     }
 }
 
-extension MatchesListViewController: UITableViewDelegate, UITableViewDataSource {
+extension MatchDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.matches.value.count
+        1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MatchListItemTableViewCell.identifier) as? MatchListItemTableViewCell else {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MatchDetailTableViewCell.identifier) as? MatchDetailTableViewCell, let matchData = viewModel.matchData.value else {
             return UITableViewCell()
         }
         
-        let matchItem = viewModel.matches.value[indexPath.row]
-        
-        cell.configure(with: matchItem)
+        cell.configure(with: matchData, teams: viewModel.teams.value)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        .cellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row >= viewModel.matches.value.count - 1 &&
-            viewModel.isNextPageAvailable() {
-            viewModel.fetchNextPage()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let matchSelected = viewModel.matches.value[indexPath.row]
-        let matchData = MatchDetailsData(beginTime: matchSelected.beginTime,
-                                         firstTeam: matchSelected.firstOponent,
-                                         secondTeam: matchSelected.secondOponent,
-                                         leagueName: matchSelected.leagueName,
-                                         serieName: matchSelected.serieName)
-        
-        let matchDetailViewController = MatchDetailsFactory.make(matchData: matchData)
-        self.navigationController?.pushViewController(matchDetailViewController, animated: true)
+        self.view.layer.bounds.height - 100
     }
 }

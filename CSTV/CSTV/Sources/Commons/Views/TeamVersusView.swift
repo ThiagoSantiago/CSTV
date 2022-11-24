@@ -36,7 +36,7 @@ final class TeamVersusView: UIView {
         label.textColor = .versusLabelColor
         label.text = "VS"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = .h6
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -78,7 +78,7 @@ extension TeamVersusView: ViewConfiguration {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             versusLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            versusLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            versusLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -Space.base04.rawValue),
         ])
         
         NSLayoutConstraint.activate([

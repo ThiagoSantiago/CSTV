@@ -54,7 +54,7 @@ final class CSTVApiRequest: CSTVApiRequestProtocol {
             }
             
             if let returnData = String(data: data, encoding: .utf8) {
-                print(returnData)
+                print("=> Request return data: \(returnData)")
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {

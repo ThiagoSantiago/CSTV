@@ -14,6 +14,7 @@ fileprivate extension CGFloat {
     static let leagueImageSize: CGFloat = 16
     static let badgeHeight: CGFloat = 38
     static let badgeWidth: CGFloat = 54
+    static let teamViewHeight: CGFloat = 120
     static let separatorHeight: CGFloat = 1
 }
 
@@ -56,7 +57,7 @@ final class MatchListItemTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 8)
+        label.font = .h8
         return label
     }()
     
@@ -82,10 +83,10 @@ final class MatchListItemTableViewCell: UITableViewCell {
         setBadgeContent(initialTime: model.beginTime,
                         gameStatus: GameStatus(rawValue: model.gameStatus) ?? .notStarted)
         
-        setTeamsContent(firstOponentName: model.firstOponentName,
-                        firstOponentLogo: model.firstOponentLogo,
-                        secondOponentName: model.secondOponentName,
-                        secondOponentLogo: model.secondOponentLogo)
+        setTeamsContent(firstOponentName: model.firstOponent.name,
+                        firstOponentLogo: model.firstOponent.imageUrl,
+                        secondOponentName: model.secondOponent.name,
+                        secondOponentLogo: model.secondOponent.imageUrl)
         
         
         setLeagueContent(leagueImageUrl: model.leagueImage,
@@ -173,6 +174,7 @@ extension MatchListItemTableViewCell: ViewConfiguration {
         NSLayoutConstraint.activate([
             teamVersusView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Space.base06.rawValue),
             teamVersusView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            teamVersusView.heightAnchor.constraint(equalToConstant: .teamViewHeight),
             teamVersusView.bottomAnchor.constraint(greaterThanOrEqualTo: separatorView.topAnchor, constant: -Space.base04.rawValue),
         ])
         

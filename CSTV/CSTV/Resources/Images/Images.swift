@@ -14,5 +14,6 @@ extension UIImage {
     }
     
     static let teamLogoPlaceholder = image(named: "team-logo-placeholder")
-    static let starEnabled = image(named: "icon-star-enabled")
+    static let rectanglePlaceholder = image(named: "rectangle-placeholder")
+    static let arrowLeft = image(named: "ic-arrow-left")
 }
