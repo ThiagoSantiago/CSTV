@@ -6,7 +6,7 @@ O CSTV é um APP de partidas de CS:GO de diversos torneios do mundo.
 
 ## Detalhes sobre a implementação
 
-O projeto foi implementado utilizando a arquitetura <pre>MVVM</pre> sem nehuma camada de navegação, como <pre>Router</pre> ou <pre>Coordinator</pre>, mas seria de fácil adoção de qualqur uma das soluções pois foi implementado <pre>Factories</pre> para criação das Viewcontrollers o que facilitaria na criação da nova camada.
+O projeto foi implementado utilizando a arquitetura **MVVM** sem nehuma camada de navegação, como **Router** ou **Coordinator**, mas seria de fácil adoção de qualqur uma das soluções pois foi implementado **Factories** para criação das **Viewcontrollers** o que facilitaria na criação da nova camada.
 
 Infelizmente devido ao tempo e a não adoção da técnica de TDD, não foram implementados testes no projeto 😔
 
