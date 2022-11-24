@@ -75,8 +75,8 @@ final class MatchDetailTableViewCell: UITableViewCell {
                 firstTeamPlayers.setContent(players: teams[0].players, alignment: .left)
                 secondTeamPlayers.setContent(players: teams[1].players, alignment: .right)
             } else {
-                firstTeamPlayers.setContent(players: teams[1].players, alignment: .right)
-                secondTeamPlayers.setContent(players: teams[0].players, alignment: .left)
+                firstTeamPlayers.setContent(players: teams[1].players, alignment: .left)
+                secondTeamPlayers.setContent(players: teams[0].players, alignment: .right)
             }
         }
     }
