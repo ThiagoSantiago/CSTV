@@ -15,11 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let rootWindow = UIWindow()
-        rootWindow.rootViewController = ViewController()
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.isHidden = true
+        rootWindow.rootViewController = navigationController
         rootWindow.makeKeyAndVisible()
         
         window = rootWindow
         
+        let initialViewController = MatchesListFactory.make()
+        navigationController.pushViewController(initialViewController, animated: true)
         return true
     }
 }
