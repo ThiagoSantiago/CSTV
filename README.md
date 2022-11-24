@@ -4,6 +4,13 @@ O CSTV é um APP de partidas de CS:GO de diversos torneios do mundo.
 - O APP mostra todas as partidas de CS:GO a partir do dia atual, além de mostrar telas de detalhe das partida como: times, jogadores e horário.
 - O APP possui 3 telas: Splash Screen, Tela principal (lista das partidas) e Tela de detalhes da partida.
 
+## Detalhes sobre a implementação
+
+O projeto foi implementado utilizando a arquitetura <pre>MVVM</pre> sem nehuma camada de navegação, como <pre>Router</pre> ou <pre>Coordinator</pre>, mas seria de fácil adoção de qualqur uma das soluções pois foi implementado <pre>Factories</pre> para criação das Viewcontrollers o que facilitaria na criação da nova camada.
+
+Infelizmente devido ao tempo e a não adoção da técnica de TDD, não foram implementados testes no projeto 😔
+
+
 ## Screen Shots
 
 ### iPhone SE (3rd generation)
@@ -16,12 +23,17 @@ O CSTV é um APP de partidas de CS:GO de diversos torneios do mundo.
 
 ## Instruções do Build
 
-- If you are thinking in cloned the repository, follow this steps below: 
-<pre>$ git clone https://github.com/ThiagoSantiago/MovieTouch.git
-$ cd OpahGit
-$ cd OpahGit
-$ open OpahGit.xcodeproj</pre>
+<pre>
+- Para clone via HTTPS: 
+$ git clone https://github.com/ThiagoSantiago/CSTV.git
 
- and then run it.
+- Para clone via SSH: 
+$ git clone git@github.com:ThiagoSantiago/CSTV.git
 
-- Or just download the code and run it.
+$ cd CSTV
+$ cd CSTV
+$ open CSTV.xcodeproj  
+</pre>
+
+Agora é só rodar o projeto! 🤓
+
