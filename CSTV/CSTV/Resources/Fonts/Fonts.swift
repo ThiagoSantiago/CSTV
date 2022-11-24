@@ -9,13 +9,15 @@ import Foundation
 import UIKit
 
 extension UIFont {
-    static let h0 = UIFont(name: "Roboto-Regular", size: 40)
-    static let h1 = UIFont(name: "Roboto-Regular", size: 36)
-    static let h2 = UIFont(name: "Roboto-Regular", size: 32)
-    static let h3 = UIFont(name: "Roboto-Regular", size: 24)
-    static let h4 = UIFont(name: "Roboto-Regular", size: 20)
-    static let h5 = UIFont(name: "Roboto-Regular", size: 18)
-    static let h6 = UIFont(name: "Roboto-Regular", size: 16)
-    static let h7 = UIFont(name: "Roboto-Regular", size: 12)
-    static let h8 = UIFont(name: "Roboto-Regular", size: 08)
+    
+    // Roboto Bold
+    static let boldH2 = UIFont(name: "Roboto-Bold", size: 32)
+    static let boldH5 = UIFont(name: "Roboto-Bold", size: 18)
+    static let boldH6 = UIFont(name: "Roboto-Bold", size: 16)
+    static let boldH7 = UIFont(name: "Roboto-Bold", size: 12)
+    static let boldH8 = UIFont(name: "Roboto-Bold", size: 08)
+    
+    // Roboto Regular
+    static let regularH8 = UIFont(name: "Roboto-Regular", size: 08)
+    static let regularH7 = UIFont(name: "Roboto-Regular", size: 12)
 }

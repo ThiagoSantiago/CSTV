@@ -20,8 +20,7 @@ final class MatchDetailsViewController: UIViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .white
-        label.text = "League + serie"
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = .boldH5
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -57,7 +57,7 @@ final class MatchListItemTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = .h8
+        label.font = .regularH8
         return label
     }()
     

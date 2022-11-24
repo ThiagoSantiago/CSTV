@@ -33,19 +33,18 @@ final class PlayerCardView: UIView {
     private lazy var nicknameLabel: UILabel = {
        let label = UILabel()
         label.textColor = .white
-        label.text = "Nickname"
         label.textAlignment = .right
-        label.font = UIFont.systemFont(ofSize: 8)
+        label.font = .boldH6
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var playerNameLabel: UILabel = {
        let label = UILabel()
-        label.textColor = .white
-        label.text = "Nome Jogador"
+        label.numberOfLines = 0
+        label.textColor = .playerNameColor
         label.textAlignment = .right
-        label.font = UIFont.systemFont(ofSize: 8)
+        label.font = .regularH7
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -125,14 +124,14 @@ extension PlayerCardView: ViewConfiguration {
         ])
         
         NSLayoutConstraint.activate([
-            nicknameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Space.base03.rawValue),
+            nicknameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Space.base02.rawValue),
             nicknameLabel.leftAnchor.constraint(equalTo: playerImage.rightAnchor, constant: Space.base03.rawValue),
             nicknameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -Space.base03.rawValue),
         ])
         
         NSLayoutConstraint.activate([
-            playerNameLabel.topAnchor.constraint(equalTo: nicknameLabel.topAnchor),
-            playerNameLabel.rightAnchor.constraint(equalTo: nicknameLabel.rightAnchor, constant: -Space.base03.rawValue),
+            playerNameLabel.topAnchor.constraint(equalTo: nicknameLabel.bottomAnchor),
+            playerNameLabel.rightAnchor.constraint(equalTo: nicknameLabel.rightAnchor, constant: -Space.base01.rawValue),
             playerNameLabel.leftAnchor.constraint(equalTo: nicknameLabel.leftAnchor),
             playerNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Space.base01.rawValue),
         ])
@@ -152,14 +151,14 @@ extension PlayerCardView: ViewConfiguration {
         ])
         
         NSLayoutConstraint.activate([
-            nicknameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Space.base03.rawValue),
+            nicknameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Space.base02.rawValue),
             nicknameLabel.rightAnchor.constraint(equalTo: playerImage.leftAnchor, constant: -Space.base03.rawValue),
             nicknameLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: Space.base03.rawValue),
         ])
         
         NSLayoutConstraint.activate([
-            playerNameLabel.topAnchor.constraint(equalTo: nicknameLabel.topAnchor),
-            playerNameLabel.leftAnchor.constraint(equalTo: nicknameLabel.leftAnchor, constant: Space.base03.rawValue),
+            playerNameLabel.topAnchor.constraint(equalTo: nicknameLabel.bottomAnchor),
+            playerNameLabel.leftAnchor.constraint(equalTo: nicknameLabel.leftAnchor, constant: Space.base01.rawValue),
             playerNameLabel.rightAnchor.constraint(equalTo: nicknameLabel.rightAnchor),
             playerNameLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Space.base01.rawValue),
         ])

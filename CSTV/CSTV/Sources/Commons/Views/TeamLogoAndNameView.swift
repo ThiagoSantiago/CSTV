@@ -27,7 +27,7 @@ final class TeamLogoAndNameView: UIView {
         label.numberOfLines = 0
         label.textColor = .white
         label.textAlignment = .center
-        label.font = .h7
+        label.font = .regularH7
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

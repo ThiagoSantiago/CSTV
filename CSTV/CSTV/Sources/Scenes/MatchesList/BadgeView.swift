@@ -18,7 +18,7 @@ final class BadgeView: UIView {
     private lazy var badgeLabel: UILabel = {
        let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 8)
+        label.font = .boldH8
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

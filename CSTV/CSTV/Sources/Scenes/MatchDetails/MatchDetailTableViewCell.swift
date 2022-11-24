@@ -27,8 +27,7 @@ final class MatchDetailTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .white
-        label.text = "Hoje, 21:00"
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = .boldH7
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

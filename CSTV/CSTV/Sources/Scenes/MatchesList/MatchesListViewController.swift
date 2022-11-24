@@ -21,7 +21,7 @@ final class MatchesListViewController: UIViewController {
         label.textAlignment = .left
         label.textColor = .white
         label.text = "Partidas"
-        label.font = .h2
+        label.font = .boldH2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
